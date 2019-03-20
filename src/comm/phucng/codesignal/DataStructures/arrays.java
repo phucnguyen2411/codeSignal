@@ -7,8 +7,8 @@ public class arrays {
 
 	public static int firstDuplicate(int[] a) {
 		Set set = new HashSet();
-		for(int i=0;i<a.length;i++){
-			if(!set.add(a[i])){
+		for (int i = 0; i < a.length; i++) {
+			if (!set.add(a[i])) {
 				return a[i];
 			}
 		}
@@ -54,6 +54,62 @@ public class arrays {
 		}
 
 		return a;
+	}
+
+	public static boolean sudoku2(char[][] grid) {
+		if (!checkCells(grid)) return false;
+		for (int i = 0; i < grid.length; i++) {
+			if (!checkRow(grid[i])) {
+				System.out.println("false row");
+				return false;
+			}
+			if (!checkCol(grid, i)) {
+				System.out.println("false col");
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private static boolean checkCells(char[][] grid) {
+		int max = grid.length;
+		for (int x = 0; x < max; x += 3) {
+			for (int y = 0; y < max; y += 3) {
+				Set<Character> cell = new HashSet<>();
+				for (int i = 0; i < 3; i++) {
+					for (int j = 0; j < 3; j++) {
+						char c = grid[x + i][y + j];
+						if (c != '.') {
+							if (!cell.add(c)) {
+								return false;
+							}
+						}
+					}
+				}
+			}
+		}
+		return true;
+	}
+
+	static boolean checkCol(char[][] grid, int col) {
+		Set<Character> cell = new HashSet<>();
+		for (int rowN = 0; rowN < grid[0].length; rowN++) {
+			if (grid[rowN][col] == '.') continue;
+			if (!cell.add(grid[rowN][col])) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	static boolean checkRow(char[] row) {
+		String rowS = String.valueOf(row);
+		for (char c : rowS.toCharArray()) {
+			if (rowS.indexOf(c) != rowS.lastIndexOf(c) && c != '.') {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }
