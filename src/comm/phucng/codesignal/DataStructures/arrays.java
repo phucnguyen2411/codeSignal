@@ -30,7 +30,6 @@ public class arrays {
 		if (resultChar.length <= 0) {
 			return '_';
 		} else {
-
 			return resultChar[0];
 		}
 	}
@@ -52,12 +51,13 @@ public class arrays {
 				a[i][n - 1 - j] = temp;
 			}
 		}
-
 		return a;
 	}
 
 	public static boolean sudoku2(char[][] grid) {
-		if (!checkCells(grid)) return false;
+		if (!checkCells(grid)) {
+			return false;
+		}
 		for (int i = 0; i < grid.length; i++) {
 			if (!checkRow(grid[i])) {
 				System.out.println("false row");
