@@ -8,7 +8,7 @@ public class Main {
 		// write your code here
 
 		//firstDuplicate
-		int[] a = {2, 1, 3, 5, 3, 2};
+		int[] a = {1, 1, 2, 2, 1};
 		String s = "abacabaabacaba";
 		System.out.println(arrays.firstDuplicate(a));
 		System.out.println(arrays.firstNotRepeatingCharacter(s));

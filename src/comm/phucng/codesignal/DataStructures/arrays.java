@@ -1,13 +1,16 @@
 package comm.phucng.codesignal.DataStructures;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class arrays {
 
 	public static int firstDuplicate(int[] a) {
-		if (a.length <= 1) return -1;
-		for (int i = 0; i < a.length; i++) {
-			int pos = Math.abs(a[i]) - 1;
-			if (a[pos] < 0) return pos + 1;
-			else a[pos] = -a[pos];
+		Set set = new HashSet();
+		for(int i=0;i<a.length;i++){
+			if(!set.add(a[i])){
+				return a[i];
+			}
 		}
 		return -1;
 	}
